@@ -1,0 +1,135 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPlBdJUzO19iAJmfGsLVidH",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/RenattoAlvez/Projeto-Final-da-Imers-o-em-IA-da-Alura-e-Google.-Aula-04-05/blob/main/Equacione\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from google.colab import userdata\n",
+        "userdata.get('secret_chave')"
+      ],
+      "metadata": {
+        "id": "VdLyLBL4DELr"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import math\n",
+        "\n",
+        "print(\"∞ Equacione + ∞\")\n",
+        "print(\"Olá! Sou o Equacione +, seu assistente para equações de segundo grau.\")\n",
+        "\n",
+        "while True:\n",
+        "  print(\"\\nDigite a equação no formato ax² + bx + c = 0\")\n",
+        "  equacao = input(\"Equação: \")\n",
+        "\n",
+        "  try:\n",
+        "    a = float(equacao.split('x²')[0])\n",
+        "    b = float(equacao.split('x² + ')[1].split('x')[0])\n",
+        "    c = float(equacao.split('x + ')[1].split(' = 0')[0])\n",
+        "  except:\n",
+        "    print(\"Formato inválido. Por favor, siga o exemplo: 2x² + 5x - 3 = 0\")\n",
+        "    continue\n",
+        "\n",
+        "  print(\"\\n--- Resolução ---\")\n",
+        "\n",
+        "  print(f\"1. Identificando os coeficientes:\")\n",
+        "  print(f\"   a = {a}\")\n",
+        "  print(f\"   b = {b}\")\n",
+        "  print(f\"   c = {c}\")\n",
+        "\n",
+        "  print(\"\\n2. Calculando o discriminante (Δ):\")\n",
+        "  delta = b**2 - 4*a*c\n",
+        "  print(f\"   Δ = b² - 4ac = ({b})² - 4 * ({a}) * ({c}) = {delta}\")\n",
+        "\n",
+        "  print(\"\\n3. Analisando o discriminante:\")\n",
+        "  if delta > 0:\n",
+        "    print(f\"   Δ > 0: A equação possui duas raízes reais e distintas.\")\n",
+        "  elif delta == 0:\n",
+        "    print(f\"   Δ = 0: A equação possui duas raízes reais e iguais (raiz dupla).\")\n",
+        "  else:\n",
+        "    print(f\"   Δ < 0: A equação não possui raízes reais (raízes complexas).\")\n",
+        "\n",
+        "  if delta >= 0:\n",
+        "    print(\"\\n4. Calculando as raízes (x', x''):\")\n",
+        "    x1 = (-b + math.sqrt(delta)) / (2*a)\n",
+        "    x2 = (-b - math.sqrt(delta)) / (2*a)\n",
+        "    print(f\"   x' = (-b + √Δ) / 2a = ({-b} + √{delta}) / (2 * {a}) = {x1:.2f}\")\n",
+        "    print(f\"   x'' = (-b - √Δ) / 2a = ({-b} - √{delta}) / (2 * {a}) = {x2:.2f}\")\n",
+        "\n",
+        "  print(\"\\n--- Fim da Resolução ---\")\n",
+        "\n",
+        "  continuar = input(\"Deseja resolver outra equação? (s/n): \")\n",
+        "  if continuar.lower() != 's':\n",
+        "    break\n",
+        "\n",
+        "print(\"\\nObrigado por usar o Equacione +! ∞\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "pbNC0jkeHovG",
+        "outputId": "13b2582b-b060-41d2-b7ce-bdc4f9887f0c"
+      },
+      "execution_count": 13,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "∞ Equacione + ∞\n",
+            "Olá! Sou o Equacione +, seu assistente para equações de segundo grau.\n",
+            "\n",
+            "Digite a equação no formato ax² + bx + c = 0\n",
+            "Equação: 3x² + 2x + 4 = 0\n",
+            "\n",
+            "--- Resolução ---\n",
+            "1. Identificando os coeficientes:\n",
+            "   a = 3.0\n",
+            "   b = 2.0\n",
+            "   c = 4.0\n",
+            "\n",
+            "2. Calculando o discriminante (Δ):\n",
+            "   Δ = b² - 4ac = (2.0)² - 4 * (3.0) * (4.0) = -44.0\n",
+            "\n",
+            "3. Analisando o discriminante:\n",
+            "   Δ < 0: A equação não possui raízes reais (raízes complexas).\n",
+            "\n",
+            "--- Fim da Resolução ---\n",
+            "Deseja resolver outra equação? (s/n): 3x² + 2x - 4 = 0\n",
+            "\n",
+            "Obrigado por usar o Equacione +! ∞\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
